@@ -33,16 +33,14 @@ describe('AuthController', () => {
       if (!user) {
         return null;
       }
-      return mockUserService
-        .validatePassword(password)
-        .then((isValid) => {
-          if (!isValid) {
-            return null;
-          }
-          const payload = { username: user.username, sub: user.id };
-          const token = mockJwtService.sign(payload);
-          return { access_token: token };
-        });
+      return mockUserService.validatePassword(password).then((isValid) => {
+        if (!isValid) {
+          return null;
+        }
+        const payload = { username: user.username, sub: user.id };
+        const token = mockJwtService.sign(payload);
+        return { access_token: token };
+      });
     }),
   };
 
