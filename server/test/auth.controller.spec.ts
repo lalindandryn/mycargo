@@ -1,7 +1,4 @@
-import { 
-    Test, 
-    TestingModule
-} from '@nestjs/testing';
+import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from 'src/controller/auth.controller';
 import { AuthService } from 'src/service/auth.service';
 
