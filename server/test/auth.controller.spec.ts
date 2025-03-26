@@ -34,7 +34,7 @@ describe('AuthController', () => {
         return null;
       }
       return mockUserService
-        .validatePassword(password, user.password)
+        .validatePassword(password)
         .then((isValid) => {
           if (!isValid) {
             return null;
