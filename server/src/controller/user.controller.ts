@@ -13,7 +13,7 @@ import { User } from 'src/entity/user.entity';
 import { JwtAuthGuard } from 'src/helper/jwt-auth.guard';
 import { UserService } from 'src/service/user.service';
 
-interface RequestWithUser extends Request {
+export interface RequestWithUser extends Request {
   user: User;
 }
 
