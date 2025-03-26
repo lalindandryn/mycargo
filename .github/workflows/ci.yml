@@ -29,8 +29,33 @@ jobs:
       - name: Format
         run: npm run format:check
 
-      - name: BUild server
+      - name: Build Server
         run: npm run build
 
       - name: Run Tests
         run: npm run test:cov
+
+  client:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint:check
+
+      - name: Format
+        run: npm run format:check
+
+      - name: Build Client
+        run: npm run build
+
+      - name: Run Tests
+        run: npm run test:cov
+      
