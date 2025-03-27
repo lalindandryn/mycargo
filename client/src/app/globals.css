@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base Colors */
+  --background: #F97F51; /* Background utama */
+  --foreground: #2C3A47; /* Warna teks utama */
+
+  /* Primary & Secondary */
+  --primary: #1B9CFC; /* Warna utama untuk tombol */
+  --secondary: #55E6C1; /* Warna sekunder */
+
+  /* Accent */
+  --accent: #EAB543; /* Warna aksen (highlight / call to action) */
+
+  /* Text Colors */
+  --text-primary: #FFFFFF; /* Warna teks utama (putih) */
+  --text-muted: #CAD3C8; /* Warna teks sekunder (soft grey) */
+
+  /* UI Colors */
+  --border: #3B3B98; /* Warna border / garis pemisah */
+  --error: #FD7272; /* Warna merah untuk error */
+  --success: #58B19F; /* Warna hijau untuk sukses */
 }
 
 @theme inline {
@@ -14,8 +31,20 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #2C3A47; /* Background gelap */
+    --foreground: #F8EFBA; /* Teks utama lebih terang */
+
+    --primary: #FC427B; /* Warna utama di mode gelap */
+    --secondary: #D6A2E8; /* Warna sekunder mode gelap */
+
+    --accent: #BDC581; /* Warna aksen (lebih soft) */
+
+    --text-primary: #FFFFFF; /* Teks utama tetap putih */
+    --text-muted: #9AECDB; /* Teks sekunder lebih terang */
+
+    --border: #6D214F; /* Border lebih gelap */
+    --error: #B33771; /* Merah lebih gelap untuk error */
+    --success: #14B8A6; /* Hijau yang lebih deep */
   }
 }
 
