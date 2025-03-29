@@ -40,19 +40,45 @@ export default function LoginPage() {
     return (
         <div className="flex h-dvh bg-gradient-to-r from-white via-[#fdddd0] to-background">
             {/* Gambar SVG di Kiri */}
-            <div className="hidden md:flex w-1/2 items-center justify-center">
-                <Image
-                    src="/images/login.svg"
-                    alt="Login Illustration"
-                    width={300}
-                    height={300}
-                    className="w-3/4"
-                />
+            <div className="hidden md:flex lg:w-3/5 items-center justify-center gap-0.5">
+                <div className="w-full flex flex-col items-end gap-0.5">
+                    <Image
+                        src="/images/login2.svg"
+                        alt="Login Illustration"
+                        width={200}
+                        height={200}
+                        className="w-3/4 border-8 border-border rounded-tl-3xl p-3"
+                    />
+                    <Image
+                        src="/images/login1.svg"
+                        alt="Login Illustration"
+                        width={200}
+                        height={200}
+                        className="w-3/4 p-3"
+                    />
+                </div>
+                <div className="w-full flex flex-col items-start gap-0.5">
+                    <Image
+                        src="/images/login3.svg"
+                        alt="Login Illustration"
+                        width={200}
+                        height={200}
+                        className="w-3/4 p-3"
+                    />
+                    <Image
+                        src="/images/login4.svg"
+                        alt="Login Illustration"
+                        width={300}
+                        height={300}
+                        className="w-3/4 border-8 border-border rounded-br-3xl p-3"
+                    />
+                </div>
             </div>
 
             {/* Form Login di Kanan */}
-            <div className="w-full md:w-1/2 flex items-center justify-center p-6">
-                <div className="w-full h-full flex flex-col items-center justify-center bg-[rgba(249,127,81,0.4)] rounded-xl">
+            <div className="w-full lg:w-2/5 flex items-center justify-center p-6">
+                <div
+                    className="w-full h-full flex flex-col items-center justify-center bg-[rgba(249,127,81,0.4)] rounded-xl">
                     <p className="text-7xl font-bold text-text-primary mb-4">Login</p>
                     <div className="flex flex-col gap-2 w-80">
                         <Input
