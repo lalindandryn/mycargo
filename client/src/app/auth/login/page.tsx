@@ -2,6 +2,7 @@
 
 import Input from "~/components/atoms/inputs/input/Input";
 import Button from "~/components/atoms/inputs/button/Button";
+import Image from "next/image";
 import {useState} from "react";
 
 export default function LoginPage() {
@@ -37,30 +38,39 @@ export default function LoginPage() {
 
 
     return (
-        <div className=" w-full h-dvh flex items-center justify-center">
-            <div className="flex flex-col items-center justify-center px-6 py-3 bg-white rounded-xl">
-                <p className="text-4xl mb-4">Login</p>
-                <div className="flex flex-col gap-2">
-                    <Input
-                        label="Email"
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <Input
-                        label="Password"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    {error && <p className="text-error text-sm">{error}</p>}
+        <div className="flex h-dvh bg-gradient-to-r from-white via-[#fdddd0] to-background">
+            {/* Gambar SVG di Kiri */}
+            <div className="hidden md:flex w-1/2 items-center justify-center">
+                <Image
+                    src="/images/login.svg"
+                    alt="Login Illustration"
+                    width={300}
+                    height={300}
+                    className="w-3/4"
+                />
+            </div>
+
+            {/* Form Login di Kanan */}
+            <div className="w-full md:w-1/2 flex items-center justify-center p-6">
+                <div className="w-full h-full flex flex-col items-center justify-center bg-[rgba(249,127,81,0.4)] rounded-xl">
+                    <p className="text-7xl font-bold text-text-primary mb-4">Login</p>
+                    <div className="flex flex-col gap-2 w-80">
+                        <Input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <Input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
+                    </div>
+                    <Button onClick={handleLogin} className="mt-5 w-80">Login</Button>
                 </div>
-                <Button
-                    className="mt-5 mb-2"
-                    onClick={handleLogin}
-                >Login</Button>
             </div>
         </div>
     )
