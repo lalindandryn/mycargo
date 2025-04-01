@@ -6,10 +6,13 @@ import { UserModule } from './user.module';
 
 @Module({
   imports: [
-    JwtModule.register({ secret: 'paichi', signOptions: { expiresIn: '60m' } }),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET_KEY || 'paichi',
+      signOptions: { expiresIn: '60m' },
+    }),
     UserModule,
   ],
   providers: [AuthService, JwtStrategy],
-  exports: [AuthService],
+  exports: [AuthService, JwtModule],
 })
 export class AuthModule {}
