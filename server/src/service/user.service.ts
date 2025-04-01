@@ -7,6 +7,10 @@ import { ChangePasswordDto } from 'src/dto/change-password.dto';
 import { JwtService } from '@nestjs/jwt';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
 
+interface JwtPayload {
+  email: string;
+}
+
 @Injectable()
 export class UserService {
   constructor(
@@ -76,7 +80,9 @@ export class UserService {
   }
 
   async resetPassword(token: string, newPassword: string) {
-    const decode = this.jwtService.verify(token, { secret: process.env.JWT_SECRET_KEY });
+    const decode = this.jwtService.verify<JwtPayload>(token, {
+      secret: process.env.JWT_SECRET_KEY,
+    });
     const user = await this.userRepository.findOne({
       where: { email: decode.email },
     });
@@ -84,22 +90,26 @@ export class UserService {
       throw new Error('User not found');
     }
 
-    const hashedPassword = await bcrypt.hash(newPassword, 10)
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;
     await this.userRepository.save(user);
     return { message: 'Password reset successfully' };
   }
 
-  async confirmEmail(token: string){
-    const decode = this.jwtService.verify(token, { secret: process.env.JWT_SECRET_KEY });
-    const user = await this.userRepository.findOne({where: {email: decode.email}})
-    if(!user){
-      throw new Error('User not found')
+  async confirmEmail(token: string) {
+    const decode = this.jwtService.verify<JwtPayload>(token, {
+      secret: process.env.JWT_SECRET_KEY,
+    });
+    const user = await this.userRepository.findOne({
+      where: { email: decode.email },
+    });
+    if (!user) {
+      throw new Error('User not found');
     }
 
-    user.isConfirmed = true
-    await this.userRepository.save(user)
-    return { message: 'Email confirmed'}
+    user.isConfirmed = true;
+    await this.userRepository.save(user);
+    return { message: 'Email confirmed' };
   }
 
   async updateUserInfo(id: number, updateData: UpdateUserDto) {
