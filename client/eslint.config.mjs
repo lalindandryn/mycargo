@@ -12,16 +12,8 @@ export default defineConfig([
     plugins: {
       js,
       tseslint,
-      prettier: "eslint-plugin-prettier",
     },
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      "plugin:prettier/recommended",
-    ],
-    rules: {
-      "prettier/prettier": "error",
-    },
+    extends: [js.configs.recommended, tseslint.configs.recommended],
   },
   {
     files: ["**/*.js"],
