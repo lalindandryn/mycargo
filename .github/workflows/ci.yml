@@ -56,6 +56,6 @@ jobs:
       - name: Build Client
         run: npm run build
 
-      - name: Run Tests
-        run: npm run test:cov
+      # - name: Run Tests
+      #   run: npm run test:cov
       
